@@ -12,19 +12,7 @@
  */
 #if defined(ARDUINO_MARSv2)
 #include "pins_arduino.h"
-#include <SPI.h>
-#include <HardwareSerial.h>
-#include <Wire.h>
 
-// MOSI, MISO, SCK
-SPIClass SENSORS_SPI(PD_7, PG_9, PG_11);
-SPIClass CAMERA_SPI(PG_14, PG_12, PG_13);
-// RX, TX
-HardwareSerial RADIO_SERIAL(PB_11, PB_10);
-HardwareSerial GPS_SERIAL(PB_15, PB_14);
-// SDA, SCL
-TwoWire CONNECTOR_I2C(PF_0, PF_1);
-TwoWire GPS_I2C(PF_15, PF_14);
 
 
 // Pin number
@@ -111,6 +99,7 @@ WEAK void SystemClock_Config(void)
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
   RCC_CRSInitTypeDef RCC_CRSInitStruct = {0};
+  RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
 
   /** Supply configuration update enable
   */
@@ -182,6 +171,17 @@ WEAK void SystemClock_Config(void)
   RCC_CRSInitStruct.HSI48CalibrationValue = 32;
 
   HAL_RCCEx_CRSConfig(&RCC_CRSInitStruct);
+
+  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_I2C1 | RCC_PERIPHCLK_QSPI | RCC_PERIPHCLK_USB | RCC_PERIPHCLK_SPI1 | RCC_PERIPHCLK_SPI6;
+  PeriphClkInitStruct.Spi123ClockSelection = RCC_SPI123CLKSOURCE_PLL;
+  PeriphClkInitStruct.Spi6ClockSelection = RCC_SPI6CLKSOURCE_D3PCLK1;
+  PeriphClkInitStruct.I2c123ClockSelection = RCC_I2C123CLKSOURCE_D2PCLK1;
+  PeriphClkInitStruct.QspiClockSelection = RCC_QSPICLKSOURCE_D1HCLK;
+  PeriphClkInitStruct.UsbClockSelection = RCC_USBCLKSOURCE_HSI48;
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
+  {
+    Error_Handler();
+  }
 }
 
 #ifdef __cplusplus

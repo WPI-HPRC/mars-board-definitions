@@ -12,6 +12,10 @@
  */
 #pragma once
 
+
+// #define HAL_ADC_MODULE_ENABLED
+// #define HAL_SPI_MODULE_ENABLED
+// #define HAL_UART_MODULE_ENABLED
 /*----------------------------------------------------------------------------
  *        MARS Custom pins numbers
  *----------------------------------------------------------------------------*/
@@ -29,8 +33,8 @@
 #define FLASH_QSPI_0        PF_8
 #define FLASH_QSPI_SCLK     PF_10
 
-#define USBP                PA_12
-#define USBN                PA_11
+#define USB_DP                PA_12
+#define USB_DM                PA_11
 
 // SD card
 #define SD_CD               PF_2
@@ -105,7 +109,7 @@
 // 20 pin radio/gnc connector
 #define ENCODER1_PWM        PB5
 #define ENCODER2_PWM        PC6
-#define ENCODER2_PWM        PB6
+#define ENCODER3_PWM        PB6
 #define ENCODER4_PWM        PE5
 
 #define SERVO1_PWM          PE11
@@ -195,18 +199,18 @@
 
 // Serial pin used for console (ex: ST-Link)
 // Required by Firmata
-#ifndef PIN_SERIAL_RX
-  #define PIN_SERIAL_RX         PD9
-#endif
-#ifndef PIN_SERIAL_TX
-  #define PIN_SERIAL_TX         PD8
-#endif
+// #ifndef PIN_SERIAL_RX
+//   #define PIN_SERIAL_RX         PD_9
+// #endif
+// #ifndef PIN_SERIAL_TX
+//   #define PIN_SERIAL_TX         PD_8
+// #endif
 
 // HSE default value is 25MHz in HAL
 // HSE_BYPASS is 8MHz
-#ifndef HSE_BYPASS_NOT_USED
-  #define HSE_VALUE             8000000
-#endif
+// #ifndef HSE_BYPASS_NOT_USED
+//   #define HSE_VALUE             8000000
+// #endif
 
 // Extra HAL modules
 #if !defined(HAL_DAC_MODULE_DISABLED)
