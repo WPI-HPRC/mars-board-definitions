@@ -10,9 +10,10 @@ STM32H753ZIT6 based boards.
 - RAM: 512KB
 
 ## Usage as Submodule
+```
 git submodule add https://github.com/WPI-HPRC/mars-board-definitions.git board
 git submodule update --init
-
+```
 ## platformio.ini
 [env:mars]
 platform = ststm32
