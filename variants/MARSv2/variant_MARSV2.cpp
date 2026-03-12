@@ -12,185 +12,87 @@
  */
 #if defined(ARDUINO_MARSv2)
 #include "pins_arduino.h"
+#include <SPI.h>
+#include <HardwareSerial.h>
+#include <Wire.h>
 
-// initialize our sensor buses that we previously defined in variant.h
-SPIClass SENSORS_SPI(SENSORS_SPI_MOSI, SENSORS_SPI_MISO, SENSORS_SPI_SCK);
-TwoWire GPS_I2C(GPS_I2C_SDA, GPS_I2C, SCL);
-HardwareSerial GPS_SERIAL(GPS_SERIAL_RX, GPS_SERIAL_TX);
-TwoWire CONNECTOR_I2C(CONNECTOR_I2C_SDA, CONNECTOR_I2C_SCL);
-SPIClass CAMERA_SPI(CAMERA_MOSI, CAMERA_MISO, CAMERA_SCK);
-HardwareSerial RADIO_SERIAL(RADIO_SERIAL_RX, RADIO_SERIAL_TX);
+// MOSI, MISO, SCK
+SPIClass SENSORS_SPI(PD_7, PG_9, PG_11);
+SPIClass CAMERA_SPI(PG_14, PG_12, PG_13);
+// RX, TX
+HardwareSerial RADIO_SERIAL(PB_11, PB_10);
+HardwareSerial GPS_SERIAL(PB_15, PB_14);
+// SDA, SCL
+TwoWire CONNECTOR_I2C(PF_0, PF_1);
+TwoWire GPS_I2C(PF_15, PF_14);
 
-// this does fundamental hardware setup BEFORE ANYTHING ELSE RUNS
-void initVariant()
-{
-  // configure all CS pins as output and write them high ASAP
-  pinMode(SENSORS_ASM_CS, OUTPUT); digitalWrite(SENSORS_ASM_CS, HIGH);
-  pinMode(SENSORS_LSM_CS, OUTPUT); digitalWrite(SENSORS_LSM_CS, HIGH);
-  pinMode(SENSORS_LPS_CS, OUTPUT); digitalWrite(SENSORS_LPS_CS, HIGH);
-  pinMode(SENSORS_LIS_CS, OUTPUT); digitalWrite(SENSORS_LIS_CS, HIGH);
-  pinMode(FLASH_CS, OUTPUT); digitalWrite(FLASH_CS, HIGH);
-  pinMode(CAMERA_CS, OUTPUT); digitalWrite(CAMERA_CS, HIGH);
-
-  // configure LED builtin pins as output and write them low as a safe starting point
-  pinMode(LED_BLUE, OUTPUT); digitalWrite(LED_BLUE, LOW);
-  pinMode(LED_GREEN, OUTPUT); digitalWrite(LED_GREEN, LOW);
-  pinMode(LED_RED, OUTPUT); digitalWrite(LED_RED, LOW);
-}
 
 // Pin number
 const PinName digitalPin[] = {
-  PB_7,
+  PA_0,
+  PA_1,
+  PA_2,
+  PA_3,
+  PA_4,
+  PA_6,
+  PA_7,
+  PA_8,
+  PA_15,
+  PB_0,
+  PB_1,
+  PB_2,
+  PB_3,
+  PB_4,
+  PB_5,
   PB_6,
-  PG_14,
+  PB_8,
+  PB_9,
+  PB_10,
+  PB_11,
+  PB_14,
+  PB_15,
+  PC_0,
+  PC_4,
+  PC_5,
+  PC_6,
+  PD_0,
+  PD_1,
+  PD_4,
+  PD_5,
+  PD_9,
+  PD_10,
+  PD_11,
+  PD_14,
+  PE_1,
+  PE_5,
+  PE_9,
+  PE_11,
   PE_13,
   PE_14,
-  PE_11,
-  PE_9,
-  PG_12,
-  PF_3,
-  PD_15,
-  PD_14,
-  PB_5,
-  PA_6,
-  PA_5,
-  PB_9,
-  PB_8,
-  PC_6,
-  PB_15,
-  PB_13,
-  PB_12,
-  PA_15,
-  PC_7,
-  PB_5,
-  PB_3,
-  PA_4,
-  PB_4,
-  PG_6,
-  PB_2,
-  PD_13,
-  PD_12,
-  PD_11,
-  PE_2,
-  PA_0,
-  PB_0,
-  PE_0,
-  PB_11,
-  PB_10,
-  PE_15,
-  PE_6,
-  PE_12,
-  PE_10,
-  PE_7,
-  PE_8,
-  PC_8,
-  PC_9,
-  PC_10,
-  PC_11,
-  PC_12,
-  PD_2,
-  PG_2,
-  PG_3,
-  PD_7,
-  PD_6,
-  PD_5,
-  PD_4,
-  PD_3,
-  PE_2,
-  PE_4,
-  PE_5,
-  PE_6,
-  PE_3,
-  PF_8,
-  PF_7,
-  PF_9,
-  PG_1,
-  PG_0,
-  PD_1,
-  PD_0,
   PF_0,
   PF_1,
   PF_2,
-  PE_9,
-  PB_2,
-  PA_3,
-  PC_0,
-  PC_3_C,
-  PB_1,
-  PC_2_C,
-  PF_10,
+  PF_3,
   PF_4,
-  PF_5,
-  PF_6,
   PF_11,
-  PA_1,
-  PA_2,
-  PA_7,
-  PA_8,
-  PA_9,
-  PA_10,
-  PA_11,
-  PA_12,
-  PA_13,
-  PA_14,
-  PB_14,
-  PC_1,
-  PC_4,
-  PC_5,
-  PC_13,
-  PC_14,
-  PC_15,
-  PD_8,
-  PD_9,
-  PD_10,
-  PE_1,
   PF_12,
   PF_13,
-  PF_14,
-  PF_15,
-  PG_4,
-  PG_5,
-  PG_7,
-  PG_8,
-  PG_9,
-  PG_10,
-  PG_11,
+  PG_12,
   PG_13,
-  PG_15,
-  PH_0,
-  PH_1
+  PG_14
 };
 
 // Analog (Ax) pin number array
 const uint32_t analogInputPin[] = {
-  73,  // A0
-  74,  // A1
-  75,  // A2
-  76,  // A3
-  77,  // A4
-  78,  // A5
-  79,  // A6
-  80,  // A7
-  81,  // A8
-  82,  // A9
-  83,  // A10
-  84,  // A11
-  85,  // A12
-  94,  // A13
-  95,  // A14
-  96,  // A15
-  104, // A16
-  105, // A17
-  106, // A18
-  8,   // A19
-  12,  // A20
-  13,  // A21
-  24,  // A22
-  32,  // A23
-  33,  // A24
-  61,  // A25
-  62,  // A26
-  63   // A27
+  5, // PA_6
+  6, // PA_7
+  9, // PB_0
+  10, // PB_1
+  22, // PC_0
+  23, // PC_4
+  24, // PC_5
+  36, // PE_9
+  47 // PF_13
 };
 
 // ----------------------------------------------------------------------------
@@ -208,7 +110,7 @@ WEAK void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
-  RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
+  RCC_CRSInitTypeDef RCC_CRSInitStruct = {0};
 
   /** Supply configuration update enable
   */
@@ -238,7 +140,7 @@ WEAK void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLM = 2;
   RCC_OscInitStruct.PLL.PLLN = 12;
   RCC_OscInitStruct.PLL.PLLP = 2;
-  RCC_OscInitStruct.PLL.PLLQ = 2;
+  RCC_OscInitStruct.PLL.PLLQ = 3;
   RCC_OscInitStruct.PLL.PLLR = 2;
   RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_3;
   RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOMEDIUM;
@@ -257,8 +159,8 @@ WEAK void SystemClock_Config(void)
   RCC_ClkInitStruct.SYSCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV1;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV2;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV2;
   RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV2;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
@@ -266,16 +168,20 @@ WEAK void SystemClock_Config(void)
     Error_Handler();
   }
 
-  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_I2C1 | RCC_PERIPHCLK_QSPI | RCC_PERIPHCLK_USB | RCC_PERIPHCLK_SPI1 | RCC_PERIPHCLK_SPI6;
-  PeriphClkInitStruct.Spi123ClockSelection = RCC_SPI123CLKSOURCE_PLL;
-  PeriphClkInitStruct.Spi6ClockSelection = RCC_SPI6CLKSOURCE_D3PCLK1;
-  PeriphClkInitStruct.I2c123ClockSelection = RCC_I2C123CLKSOURCE_D2PCLK1;
-  PeriphClkInitStruct.QspiClockSelection = RCC_QSPICLKSOURCE_D1HCLK;
-  PeriphClkInitStruct.UsbClockSelection = RCC_USBCLKSOURCE_HSI48;
-  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
-  {
-    Error_Handler();
-  }
+  /** Enable the SYSCFG APB clock
+  */
+  __HAL_RCC_CRS_CLK_ENABLE();
+
+  /** Configures CRS
+  */
+  RCC_CRSInitStruct.Prescaler = RCC_CRS_SYNC_DIV1;
+  RCC_CRSInitStruct.Source = RCC_CRS_SYNC_SOURCE_LSE;
+  RCC_CRSInitStruct.Polarity = RCC_CRS_SYNC_POLARITY_RISING;
+  RCC_CRSInitStruct.ReloadValue = __HAL_RCC_CRS_RELOADVALUE_CALCULATE(48000000,32768);
+  RCC_CRSInitStruct.ErrorLimitValue = 34;
+  RCC_CRSInitStruct.HSI48CalibrationValue = 32;
+
+  HAL_RCCEx_CRSConfig(&RCC_CRSInitStruct);
 }
 
 #ifdef __cplusplus
