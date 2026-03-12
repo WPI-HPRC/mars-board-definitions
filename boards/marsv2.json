@@ -1,0 +1,22 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m7",
+    "extra_flags": "-DMARS -DTIM_IRQ_PRIO=2 -DTIM_I2C_PRIO=3 -DPIO_FRAMEWORK_ARDUINO_ENABLE_CDC -DUSBCON -DUSBD_VID=0x0000 -DUSBD_PID=0x0000 -DHSE_VALUE=25000000UL -DLSE_VALUE=32768UL -DHSE_BYPASS_NOT_USED -DLSE_BYPASS_NOT_USED -mfloat-abi=hard -mfpu=fpv5-d16",
+    "f_cpu": "480000000L",
+    "f_hse": "25000000L",
+    "f_lse": "32768L",
+    "mcu": "stm32h753zit6",
+    "variant": "MARS"
+  },
+  "frameworks": ["arduino"],
+  "name": "MARS",
+  "upload": {
+    "maximum_ram_size": 524288,
+    "maximum_size": 2097152,
+    "protocol": "dfu",
+    "protocols": ["dfu", "stlink", "jlink"]
+  },
+  "url": "",
+  "vendor": "WPI-HPRC"
+}
