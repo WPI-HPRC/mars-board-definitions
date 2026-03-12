@@ -10,7 +10,7 @@
  *
  *******************************************************************************
  */
-#if defined(ARDUINO_MARS_V2)
+#if defined(ARDUINO_MARSv2)
 #include "pins_arduino.h"
 
 // initialize our sensor buses that we previously defined in variant.h
