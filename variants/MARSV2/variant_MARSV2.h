@@ -12,10 +12,7 @@
  */
 #pragma once
 
-
-// #define HAL_ADC_MODULE_ENABLED
-// #define HAL_SPI_MODULE_ENABLED
-// #define HAL_UART_MODULE_ENABLED
+#define CUSTOM_PERIPHERAL_PINS
 /*----------------------------------------------------------------------------
  *        MARS Custom pins numbers
  *----------------------------------------------------------------------------*/
@@ -26,30 +23,30 @@
 #define LED_RED             PD9
 
 // QSPI Flash
-#define FLASH_CS            PG_6
-#define FLASH_QSPI_3        PF_6
-#define FLASH_QSPI_2        PF_7
-#define FLASH_QSPI_1        PF_9
-#define FLASH_QSPI_0        PF_8
-#define FLASH_QSPI_SCLK     PF_10
+#define FLASH_CS            PG6
+#define FLASH_QSPI_3        PF6
+#define FLASH_QSPI_2        PF7
+#define FLASH_QSPI_1        PF9
+#define FLASH_QSPI_0        PF8
+#define FLASH_QSPI_SCLK     PF10
 
-#define USB_DP                PA_12
-#define USB_DM                PA_11
+#define USB_DP              PA_12
+#define USB_DM              PA_11
 
 // SD card
-#define SD_CD               PF_2
-#define SD_CMD              PD_2
-#define SD_DAT0             PC_8
-#define SD_DAT1             PC_9
-#define SD_DAT2             PC_10
-#define SD_DAT3             PC_11
-#define SD_SCK              PC_12
+#define SD_PIN_CD           PF2
+#define SD_PIN_CMD          PD2
+#define SD_PIN_DAT0         PC8
+#define SD_PIN_DAT1         PC9
+#define SD_PIN_DAT2         PC10
+#define SD_PIN_DAT3         PC11
+#define SD_PIN_SCK          PC12
 
 // sensors SPI bus
 
-#define SENSORS_SPI_SCK     PG_11
-#define SENSORS_SPI_MISO    PG_9
-#define SENSORS_SPI_MOSI    PD_7
+#define SENSORS_SPI_SCK     PG11
+#define SENSORS_SPI_MISO    PG9
+#define SENSORS_SPI_MOSI    PD7
 #define SENSORS_ASM_CS      PD5
 #define SENSORS_LSM_CS      PB4
 #define SENSORS_LPS_CS      PD0
@@ -66,12 +63,12 @@
 
 // GPS
 
-#define GPS_I2C_SDA         PF_15
-#define GPS_I2C_SCL         PF_14
+#define GPS_I2C_SDA         PF15
+#define GPS_I2C_SCL         PF14
 #define GPS_RESET           PB8
 #define GPS_INT             PB9
-#define GPS_SERIAL_TX       PB_14
-#define GPS_SERIAL_RX       PB_15
+#define GPS_SERIAL_TX       PB14
+#define GPS_SERIAL_RX       PB15
 
 
 
@@ -123,8 +120,8 @@
 #define RADIO_AUX           PF11
 #define RADIO_M1            PF12
 #define RADIO_M0            PB2
-#define RADIO_SERIAL_TX     PB_10
-#define RADIO_SERIAL_RX     PB_11
+#define RADIO_SERIAL_TX     PB10
+#define RADIO_SERIAL_RX     PB11
 
 
 #define PA0 0 
@@ -178,9 +175,25 @@
 #define PG12 48
 #define PG13 49
 #define PG14 50
+#define PD7 51
+#define PG9 52
+#define PG11 53
+#define PG6 54
+#define PF6 55
+#define PF7 56
+#define PF9 57
+#define PF8 58
+#define PF10 59
+#define PD2 60
+#define PC8 61
+#define PC9 62
+#define PC10 63
+#define PC11 64
+#define PC12 65
+#define PF15 66
+#define PF14 67
 
-
-#define NUM_DIGITAL_PINS        51
+#define NUM_DIGITAL_PINS        68
 #define NUM_ANALOG_INPUTS       9
 
 // Timer Definitions
@@ -193,9 +206,9 @@
 #endif
 
 // UART Definitions
-#ifndef SERIAL_UART_INSTANCE
-  #define SERIAL_UART_INSTANCE  3 //Connected to ST-Link
-#endif
+// #ifndef SERIAL_UART_INSTANCE
+//   #define SERIAL_UART_INSTANCE  3 //Connected to ST-Link
+// #endif
 
 // Serial pin used for console (ex: ST-Link)
 // Required by Firmata
@@ -213,9 +226,6 @@
 // #endif
 
 // Extra HAL modules
-#if !defined(HAL_DAC_MODULE_DISABLED)
-  #define HAL_DAC_MODULE_ENABLED
-#endif
 #if !defined(HAL_QSPI_MODULE_DISABLED)
   #define HAL_QSPI_MODULE_ENABLED
 #endif

@@ -8,7 +8,7 @@
     "f_hse": "25000000L",
     "f_lse": "32768L",
     "mcu": "stm32h753zit6",
-    "variant": "MARSv2"
+    "variant": "MARSV2"
   },
   "frameworks": ["arduino"],
   "name": "MARS Version 2",

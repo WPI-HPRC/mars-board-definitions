@@ -13,8 +13,6 @@
 #if defined(ARDUINO_MARSv2)
 #include "pins_arduino.h"
 
-
-
 // Pin number
 const PinName digitalPin[] = {
   PA_0,
@@ -67,7 +65,24 @@ const PinName digitalPin[] = {
   PF_13,
   PG_12,
   PG_13,
-  PG_14
+  PG_14,
+  PD_7,
+  PG_9,
+  PG_11,
+  PG_6,
+  PF_6,
+  PF_7,
+  PF_9,
+  PF_8,
+  PF_10,
+  PD_2,
+  PC_8,
+  PC_9,
+  PC_10,
+  PC_11,
+  PC_12,
+  PF_15,
+  PF_14,
 };
 
 // Analog (Ax) pin number array
