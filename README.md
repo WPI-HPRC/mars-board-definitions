@@ -17,11 +17,11 @@ git submodule update --init
 ## platformio.ini
 ```
 [platformio]
-boards_dir = board/boards
+boards_dir = mars-board-definitions/boards
 
-[env:marsv2]
+[env:marsv20]
 platform = ststm32
 framework = arduino
-board = marsv2
-board_build.variants_dir = board/variants
+board = marsv20
+board_build.variants_dir = mars-board-definitions/variants
 ```
