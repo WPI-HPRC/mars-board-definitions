@@ -40,13 +40,13 @@
 #define OSCOUT              PH_1
 
 // SD card
-#define SD_CD               PF2
-#define SD_CMD              PD2
-#define SD_DAT0             PC8
-#define SD_DAT1             PC9
-#define SD_DAT2             PC10
-#define SD_DAT3             PC11
-#define SD_SCK              PC12
+#define PIN_SD_CD           PF2
+#define PIN_SD_CMD          PD2
+#define PIN_SD_DAT0         PC8
+#define PIN_SD_DAT1         PC9
+#define PIN_SD_DAT2         PC10
+#define PIN_SD_DAT3         PC11
+#define PIN_SD_SCK          PC12
 
 // sensors SPI bus
 
@@ -213,7 +213,7 @@
 #define PC12 75
 
 
-#define NUM_DIGITAL_PINS        7
+#define NUM_DIGITAL_PINS        76
 #define NUM_ANALOG_INPUTS       9
 
 // Timer Definitions
@@ -226,18 +226,9 @@
 #endif
 
 // UART Definitions
-#ifndef SERIAL_UART_INSTANCE
-  #define SERIAL_UART_INSTANCE  3 //Connected to ST-Link
-#endif
-
-// Serial pin used for console (ex: ST-Link)
-// Required by Firmata
-#ifndef PIN_SERIAL_RX
-  #define PIN_SERIAL_RX         PD9
-#endif
-#ifndef PIN_SERIAL_TX
-  #define PIN_SERIAL_TX         PD8
-#endif
+// #ifndef SERIAL_UART_INSTANCE
+//   #define SERIAL_UART_INSTANCE  3 //Connected to ST-Link
+// #endif
 
 // HSE default value is 25MHz in HAL
 // HSE_BYPASS is 8MHz
