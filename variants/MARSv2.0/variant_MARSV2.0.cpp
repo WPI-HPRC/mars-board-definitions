@@ -10,22 +10,8 @@
  *
  *******************************************************************************
  */
-#if defined(ARDUINO_MARSv2)
+#if defined(ARDUINO_MARSv20)
 #include "pins_arduino.h"
-#include <SPI.h>
-#include <HardwareSerial.h>
-#include <Wire.h>
-
-// MOSI, MISO, SCK
-SPIClass SENSORS_SPI(PD_7, PG_9, PG_11);
-SPIClass CAMERA_SPI(PG_14, PG_12, PG_13);
-// RX, TX
-HardwareSerial RADIO_SERIAL(PB_11, PB_10);
-HardwareSerial GPS_SERIAL(PB_15, PB_14);
-// SDA, SCL
-TwoWire CONNECTOR_I2C(PF_0, PF_1);
-TwoWire GPS_I2C(PF_15, PF_14);
-
 
 // Pin number
 const PinName digitalPin[] = {
@@ -79,7 +65,32 @@ const PinName digitalPin[] = {
   PF_13,
   PG_12,
   PG_13,
-  PG_14
+  PG_14,
+  PG_6,
+  PF_6,
+  PF_7,
+  PF_8,
+  PF_9,
+  PF_10,
+  PF_14,
+  PF_15,
+  PG_11,
+  PG_9,
+  PD_7,
+  PD_2,
+  PG_7,
+  PA_9,
+  PA_10,
+  PB_13,
+  PC_1,
+  PC_3_C,
+  PC_2_C,
+  PC_7,
+  PC_8,
+  PC_9,
+  PC_10,
+  PC_11,
+  PC_12
 };
 
 // Analog (Ax) pin number array

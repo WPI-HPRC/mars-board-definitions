@@ -22,30 +22,37 @@
 #define LED_RED             PD9
 
 // QSPI Flash
-#define FLASH_CS            PG_6
-#define FLASH_QSPI_3        PF_6
-#define FLASH_QSPI_2        PF_7
-#define FLASH_QSPI_1        PF_9
-#define FLASH_QSPI_0        PF_8
-#define FLASH_QSPI_SCLK     PF_10
+#define FLASH_CS            PG6
+#define FLASH_QSPI_3        PF6
+#define FLASH_QSPI_2        PF7
+#define FLASH_QSPI_1        PF9
+#define FLASH_QSPI_0        PF8
+#define FLASH_QSPI_SCLK     PF10
 
-#define USBP                PA_12
+// DO NOT OVERRIDE
 #define USBN                PA_11
+#define USBP                PA_12
+#define SWDIO               PA_13
+#define SWCLK               PA_14
+#define OSC32IN             PC_14
+#define OSC32OUT            PC_15
+#define OSCIN               PH_0
+#define OSCOUT              PH_1
 
 // SD card
-#define SD_CD               PF_2
-#define SD_CMD              PD_2
-#define SD_DAT0             PC_8
-#define SD_DAT1             PC_9
-#define SD_DAT2             PC_10
-#define SD_DAT3             PC_11
-#define SD_SCK              PC_12
+#define SD_CD               PF2
+#define SD_CMD              PD2
+#define SD_DAT0             PC8
+#define SD_DAT1             PC9
+#define SD_DAT2             PC10
+#define SD_DAT3             PC11
+#define SD_SCK              PC12
 
 // sensors SPI bus
 
-#define SENSORS_SPI_SCK     PG_11
-#define SENSORS_SPI_MISO    PG_9
-#define SENSORS_SPI_MOSI    PD_7
+#define SENSORS_SPI_SCK     PG11
+#define SENSORS_SPI_MISO    PG9
+#define SENSORS_SPI_MOSI    PD7
 #define SENSORS_ASM_CS      PD5
 #define SENSORS_LSM_CS      PB4
 #define SENSORS_LPS_CS      PD0
@@ -62,12 +69,12 @@
 
 // GPS
 
-#define GPS_I2C_SDA         PF_15
-#define GPS_I2C_SCL         PF_14
+#define GPS_I2C_SDA         PF15
+#define GPS_I2C_SCL         PF14
 #define GPS_RESET           PB8
 #define GPS_INT             PB9
-#define GPS_SERIAL_TX       PB_14
-#define GPS_SERIAL_RX       PB_15
+#define GPS_SERIAL_TX       PB14
+#define GPS_SERIAL_RX       PB15
 
 
 
@@ -78,21 +85,26 @@
 
 
 // 30pin connector
-#define PWM_OUT1            PA0
-#define PWM_OUT2            PA1
-#define PWM_OUT3            PA2
-#define PWM_OUT4            PA3
+#define PWM_OUT1            PE5
+#define PWM_OUT2            PE6
+#define PWM_OUT3            PA0
+#define PWM_OUT4            PA1
+#define PWM_OUT5            PA2
+#define PWM_OUT6            PA3
+#define PWM_OUT7            PB6
+#define PWM_OUT8            PB7
 
 
 #define CONNECTOR_I2C_SDA   PF0
 #define CONNECTOR_I2C_SCL   PF1
 
+#define CAMERA_MOSI         PC1
+#define CAMERA_MISO         PC2C
+#define CAMERA_SCK          PB13
+#define CAMERA_CS           PC3C
 
-#define CAMERA_MOSI         PG14
-#define CAMERA_MISO         PG12
-#define CAMERA_SCK          PG13
-#define CAMERA_CS           PG8
-
+#define ADC_INP3            PA6
+#define ADC_INN3            PA7
 #define ADC_INP5            PB1
 #define ADC_INN5            PB0
 #define ADC_INP4            PC4
@@ -103,15 +115,15 @@
 
 
 // 20 pin radio/gnc connector
-#define ENCODER1_PWM        PB5
-#define ENCODER2_PWM        PC6
-#define ENCODER2_PWM        PB6
-#define ENCODER4_PWM        PE5
+#define ENCODER1_PWM        PE11
+#define ENCODER2_PWM        PE13
+#define ENCODER3_PWM        PA9
+#define ENCODER4_PWM        PE14
 
-#define SERVO1_PWM          PE11
-#define SERVO2_PWM          PE13
-#define SERVO3_PWM          PE14
-#define SERVO4_PWM          PA8
+#define SERVO1_PWM          PA10
+#define SERVO2_PWM          PG7
+#define SERVO3_PWM          PC6
+#define SERVO4_PWM          PC7
 
 #define LEVEL_SHIFT_ENABLE  PD4
 #define CANARD_POWER_ENABLE PA4
@@ -119,8 +131,8 @@
 #define RADIO_AUX           PF11
 #define RADIO_M1            PF12
 #define RADIO_M0            PB2
-#define RADIO_SERIAL_TX     PB_10
-#define RADIO_SERIAL_RX     PB_11
+#define RADIO_SERIAL_TX     PB10
+#define RADIO_SERIAL_RX     PB11
 
 
 #define PA0 0 
@@ -174,9 +186,34 @@
 #define PG12 48
 #define PG13 49
 #define PG14 50
+#define PG6 51
+#define PF6 52
+#define PF7 53
+#define PF8 54
+#define PF9 55
+#define PF10 56
+#define PF14 57
+#define PF15 58
+#define PG11 59
+#define PG9 60
+#define PD7 61
+#define PD2 62
+#define PG7 63
+#define PA9 64
+#define PA10 65
+#define PB13 66
+#define PC1 67
+#define PC3C 68
+#define PC2C 69
+#define PC7 70
+#define PC8 71
+#define PC9 72
+#define PC10 73
+#define PC11 74
+#define PC12 75
 
 
-#define NUM_DIGITAL_PINS        51
+#define NUM_DIGITAL_PINS        7
 #define NUM_ANALOG_INPUTS       9
 
 // Timer Definitions
@@ -204,9 +241,9 @@
 
 // HSE default value is 25MHz in HAL
 // HSE_BYPASS is 8MHz
-#ifndef HSE_BYPASS_NOT_USED
-  #define HSE_VALUE             8000000
-#endif
+// #ifndef HSE_BYPASS_NOT_USED
+//   #define HSE_VALUE             8000000
+// #endif
 
 // Extra HAL modules
 #if !defined(HAL_DAC_MODULE_DISABLED)
