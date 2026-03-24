@@ -196,12 +196,25 @@ WEAK void SystemClock_Config(void)
 
   RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
 
-  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_I2C1 | RCC_PERIPHCLK_QSPI | RCC_PERIPHCLK_USB | RCC_PERIPHCLK_SPI1 | RCC_PERIPHCLK_SPI6;
-  PeriphClkInitStruct.Spi123ClockSelection = RCC_SPI123CLKSOURCE_PLL;
-  PeriphClkInitStruct.Spi6ClockSelection = RCC_SPI6CLKSOURCE_D3PCLK1;
-  PeriphClkInitStruct.I2c123ClockSelection = RCC_I2C123CLKSOURCE_D2PCLK1;
-  PeriphClkInitStruct.QspiClockSelection = RCC_QSPICLKSOURCE_D1HCLK;
-  PeriphClkInitStruct.UsbClockSelection = RCC_USBCLKSOURCE_HSI48;
+PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_SPI1    |
+                                            RCC_PERIPHCLK_SPI6    |
+                                            RCC_PERIPHCLK_I2C2    |
+                                            RCC_PERIPHCLK_I2C4    |
+                                            RCC_PERIPHCLK_USART1  |
+                                            RCC_PERIPHCLK_USART3  |
+                                            RCC_PERIPHCLK_USB     |
+                                            RCC_PERIPHCLK_QSPI    ;
+                                            RCC_PERIPHCLK_SDMMC;
+
+PeriphClkInitStruct.Spi123ClockSelection = RCC_SPI123CLKSOURCE_PLL;      // SPI1 is in SPI1/2/3 group
+PeriphClkInitStruct.Spi6ClockSelection   = RCC_SPI6CLKSOURCE_D3PCLK1;   // SPI6 is in D3 domain
+PeriphClkInitStruct.I2c123ClockSelection = RCC_I2C123CLKSOURCE_D2PCLK1; // I2C2 is in I2C1/2/3 group
+PeriphClkInitStruct.I2c4ClockSelection   = RCC_I2C4CLKSOURCE_D3PCLK1;   // I2C4 is in D3 domain
+PeriphClkInitStruct.Usart16ClockSelection = RCC_USART16CLKSOURCE_D2PCLK2; // USART1 is in USART1/6 group
+PeriphClkInitStruct.Usart234578ClockSelection = RCC_USART234578CLKSOURCE_D2PCLK1; // USART3 is in this group
+PeriphClkInitStruct.QspiClockSelection   = RCC_QSPICLKSOURCE_D1HCLK;
+PeriphClkInitStruct.UsbClockSelection    = RCC_USBCLKSOURCE_HSI48;
+PeriphClkInitStruct.SdmmcClockSelection  = RCC_SDMMCCLKSOURCE_PLL;       // or RCC_SDMMCCLKSOURCE_PLL2 depending on needs
   
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
   {
