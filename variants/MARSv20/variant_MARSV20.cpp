@@ -203,7 +203,7 @@ WEAK void SystemClock_Config(void)
                                             RCC_PERIPHCLK_USART1  |
                                             RCC_PERIPHCLK_USART3  |
                                             RCC_PERIPHCLK_USB     |
-                                            RCC_PERIPHCLK_QSPI    ;
+                                            RCC_PERIPHCLK_QSPI    |
                                             RCC_PERIPHCLK_SDMMC;
 
   PeriphClkInitStruct.Spi123ClockSelection = RCC_SPI123CLKSOURCE_PLL;      // SPI1 is in SPI1/2/3 group
