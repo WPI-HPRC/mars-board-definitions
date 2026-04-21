@@ -19,7 +19,7 @@
 // LEDS
 #define LED_BLUE            PA10
 #define LED_GREEN           PC7
-#define LED_RED             PD_13
+#define LED_RED             PD13
 
 // QSPI Flash
 #define FLASH_CS            PG6
@@ -206,9 +206,10 @@
 #define PC10 73
 #define PC11 74
 #define PC12 75
+#define PD13 76
 
 
-#define NUM_DIGITAL_PINS        76
+#define NUM_DIGITAL_PINS        77
 #define NUM_ANALOG_INPUTS       9
 
 // Timer Definitions
