@@ -1,0 +1,23 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m7",
+    "extra_flags": "-DSTM32H753xx -DARDUINO_MARSv21 -DMARSv21 -DPIO_FRAMEWORK_ARDUINO_ENABLE_CDC -DUSBCON -DHSE_VALUE=25000000UL -DLSE_VALUE=32768UL -mfloat-abi=hard -mfpu=fpv5-d16",
+    "f_cpu": "75000000L",
+    "f_hse": "25000000L",
+    "f_lse": "32768L",
+    "mcu": "stm32h753zit6",
+    "product_line": "STM32H753xx",
+    "variant": "MARSv21"
+  },
+  "frameworks": ["arduino"],
+  "name": "MARS Version 2.1",
+  "upload": {
+    "maximum_ram_size": 524288,
+    "maximum_size": 2097152,
+    "protocol": "dfu",
+    "protocols": ["dfu"]
+  },
+  "url": "",
+  "vendor": "WPI-HPRC"
+}
