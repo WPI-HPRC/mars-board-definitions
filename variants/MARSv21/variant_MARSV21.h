@@ -60,8 +60,8 @@
 
 
 // sensor interupts
-#define ASM_INT1            PF3
-#define ASM_INT2            PF4
+#define ASM_INT1            PG15
+#define ASM_INT2            PF3
 #define LSM_INT1            PB3
 #define LSM_INT2            PE1
 #define LPS_INT             PD1
@@ -84,23 +84,21 @@
 
 
 // 30pin connector
-#define PWM_OUT1            PE5
-#define PWM_OUT2            PE6
-#define PWM_OUT3            PA0
-#define PWM_OUT4            PA1
-#define PWM_OUT5            PA2
-#define PWM_OUT6            PA3
-#define PWM_OUT7            PB6
-#define PWM_OUT8            PB7
-
+#define PWM_OUT1            PA0 // TIM02_CH1 on schematic
+#define PWM_OUT2            PA1 // TIM02_CH2 on schematic
+#define PWM_OUT3            PA2 // TIM02_CH3 on schematic
+#define PWM_OUT4            PA3 // TIM02_CH4 on schematic
+#define PWM_OUT5            PD12 // TIM04_CH1 on schematic
+#define PWM_OUT6            PB7 // TIM04_CH2 on schematic
+#define PWM_OUT7            PE6 // TIM15_CH2 on schematic
 
 #define CONNECTOR_I2C_SDA   PF0
 #define CONNECTOR_I2C_SCL   PF1
 
-#define CAMERA_MOSI         PC1
-#define CAMERA_MISO         PC2C
-#define CAMERA_SCK          PB13
-#define CAMERA_CS           PC3C
+#define CAMERA_MOSI         PG14
+#define CAMERA_MISO         PG12
+#define CAMERA_SCK          PG13
+#define CAMERA_CS           PG8
 
 #define ADC_INP3            PA6
 #define ADC_INN3            PA7
@@ -109,7 +107,7 @@
 #define ADC_INP4            PC4
 #define ADC_INN4            PC5
 
-// 20 pin radio/gnc connector
+// GNC
 #define ENCODER1_PWM        PB5
 #define ENCODER2_PWM        PB6
 #define ENCODER3_PWM        PC6
@@ -120,9 +118,11 @@
 #define SERVO3_PWM          PE14
 #define SERVO4_PWM          PA8
 
-#define LEVEL_SHIFT_ENABLE  PD4
+#define LEVEL_SHIFT_ENABLE  PB12
 #define CANARD_POWER_ENABLE PA4
 
+
+// Radio
 #define RADIO_AUX           PF11
 #define RADIO_M1            PF12
 #define RADIO_M0            PB2
@@ -158,59 +158,58 @@
 #define PC6 25
 #define PD0 26
 #define PD1 27
-#define PD4 28
-#define PD5 29
-#define PD9 30
-#define PD10 31
-#define PD11 32
-#define PD14 33
-#define PE1 34
-#define PE5 35
-#define PE9 36
-#define PE11 37
-#define PE13 38
-#define PE14 39
-#define PF0 40
-#define PF1 41
-#define PF2 42
-#define PF3 43
-#define PF4 44
-#define PF11 45
-#define PF12 46
-#define PF13 47
-#define PG12 48
-#define PG13 49
-#define PG14 50
-#define PG6 51
-#define PF6 52
-#define PF7 53
-#define PF8 54
-#define PF9 55
-#define PF10 56
-#define PF14 57
-#define PF15 58
-#define PG11 59
-#define PG9 60
-#define PD7 61
-#define PD2 62
-#define PG7 63
-#define PA9 64
-#define PA10 65
-#define PB13 66
-#define PC1 67
-#define PC3C 68
-#define PC2C 69
-#define PC7 70
-#define PC8 71
-#define PC9 72
-#define PC10 73
-#define PC11 74
-#define PC12 75
-#define PD13 76
+#define PD5 28
+#define PD10 29
+#define PD11 30
+#define PD14 31
+#define PE1 32
+#define PE5 33
+#define PE9 34
+#define PE11 35
+#define PE13 36
+#define PE14 37
+#define PF0 38
+#define PF1 39
+#define PF2 40
+#define PF3 41
+#define PF11 42
+#define PF12 43
+#define PF13 44
+#define PG12 45
+#define PG13 46
+#define PG14 47
+#define PG6 48
+#define PF6 49
+#define PF7 50
+#define PF8 51
+#define PF9 52
+#define PF10 53
+#define PF14 54
+#define PF15 55
+#define PG11 56
+#define PG9 57
+#define PD7 58
+#define PD2 59
+#define PG7 60
+#define PA9 61
+#define PA10 62
+#define PC7 63
+#define PC8 64
+#define PC9 65
+#define PC10 66
+#define PC11 67
+#define PC12 68
+#define PD13 69
+#define PG15 70
+#define PB12 71
+#define PG8 72
+#define PE6 73
+#define PD12 74
 
-
-#define NUM_DIGITAL_PINS        77
-#define NUM_ANALOG_INPUTS       9
+// one more than above index, size of digitalPin[] in the .cpp of the same name
+#define NUM_DIGITAL_PINS        75
+// size of analogInputPin[] in the .cpp of the same name 
+#define NUM_ANALOG_INPUTS       9 
 
 // Timer Definitions
 // Use TIM6/TIM7 when possible as servo and tone don't need GPIO output pin
