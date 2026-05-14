@@ -61,7 +61,7 @@
 
 // sensor interupts
 #define ASM_INT1            PF3
-#define ASM_INT2            PF4
+#define ASM_INT2            PG15
 #define LSM_INT1            PB3
 #define LSM_INT2            PE1
 #define LPS_INT             PD1
@@ -174,7 +174,7 @@
 #define PF1 41
 #define PF2 42
 #define PF3 43
-#define PF4 44
+#define PG15 44
 #define PF11 45
 #define PF12 46
 #define PF13 47
