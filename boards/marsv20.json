@@ -11,12 +11,18 @@
     "variant": "MARSv20"
   },
   "frameworks": ["arduino"],
+  "platform": "ststm32",
   "name": "MARS Version 2.0",
   "upload": {
     "maximum_ram_size": 524288,
     "maximum_size": 2097152,
     "protocol": "dfu",
-    "protocols": ["dfu"]
+    "protocols": ["dfu", "stlink"]
+  },
+  "debug": {
+    "default_tools": ["stlink"],
+    "openocd_target": "stm32h7x",
+    "svd_path": "STM32H753.svd"
   },
   "url": "",
   "vendor": "WPI-HPRC"
