@@ -200,6 +200,7 @@ WEAK void SystemClock_Config(void)
                                             RCC_PERIPHCLK_SPI6    |
                                             RCC_PERIPHCLK_I2C2    |
                                             RCC_PERIPHCLK_I2C4    |
+                                            RCC_PERIPHCLK_UART4   |
                                             RCC_PERIPHCLK_USART1  |
                                             RCC_PERIPHCLK_USART3  |
                                             RCC_PERIPHCLK_USB     |

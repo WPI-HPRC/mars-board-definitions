@@ -102,9 +102,9 @@
 #define CAMERA_SCK          PB13
 #define CAMERA_CS           PC3C
 
-// camera serial (example pins!!! not yet configured)
-#define CAMERA_SERIAL_TX     PC7
-#define CAMERA_SERIAL_RX     PC8
+// // camera serial 
+#define CAMERA_SERIAL_TX     PA0
+#define CAMERA_SERIAL_RX     PA1
 
 #define ADC_INP3            PA6
 #define ADC_INN3            PA7
