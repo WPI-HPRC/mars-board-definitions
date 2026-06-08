@@ -84,13 +84,13 @@
 
 
 // 30pin connector
-#define PWM_OUT1            PE5
+#define LATCH_SERVO_PWM     PE5
 #define PWM_OUT2            PE6
-#define PWM_OUT3            PA0
-#define PWM_OUT4            PA1
-#define PWM_OUT5            PA2
-#define PWM_OUT6            PA3
-#define PWM_OUT7            PB6
+#define PWM_OUT3            PA0 //UART4_TX (avoid if possible)
+#define PWM_OUT4            PA1 //UART4_RX (avoid if possible)
+#define LEFT_SCREW_PWM      PA2
+#define RIGHT_SCREW_PWM     PA3
+#define ANTENNA_SERVO_PWM   PB6
 #define PWM_OUT8            PB7
 
 
