@@ -90,7 +90,7 @@
 #define PWM_OUT4            PA1 //UART4_RX (avoid if possible)
 #define LEFT_SCREW_PWM      PA2
 #define RIGHT_SCREW_PWM     PA3
-#define ANTENNA_SERVO_PWM   PB6
+#define PWM_OUT7            PB6
 #define PWM_OUT8            PB7
 #define ALT_PWM_TRY1        PB0
 
