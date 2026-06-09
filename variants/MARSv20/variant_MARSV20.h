@@ -84,15 +84,14 @@
 
 
 // 30pin connector
-#define LATCH_SERVO_PWM     PE5 // pin header 27
+#define PWM_OUT1            PE5 // pin header 27
 #define PWM_OUT2            PE6
-#define PWM_OUT3            PA0 //UART4_TX (avoid if possible)
-#define PWM_OUT4            PA1 //UART4_RX (avoid if possible)
-#define LEFT_SCREW_PWM      PA2
-#define RIGHT_SCREW_PWM     PA3
+#define PWM_OUT3            PA0
+#define PWM_OUT4            PA1
+#define PWM_OUT5            PA2
+#define PWM_OUT6            PA3
 #define PWM_OUT7            PB6
 #define PWM_OUT8            PB7
-#define ALT_PWM_TRY1        PB0
 
 
 #define CONNECTOR_I2C_SDA   PF0
@@ -103,9 +102,6 @@
 #define CAMERA_SCK          PB13
 #define CAMERA_CS           PC3C
 
-// // camera serial 
-#define CAMERA_SERIAL_TX     PA0
-#define CAMERA_SERIAL_RX     PA1
 
 #define ADC_INP3            PA6
 #define ADC_INN3            PA7
