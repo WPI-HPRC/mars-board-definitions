@@ -84,7 +84,7 @@
 
 
 // 30pin connector
-#define LATCH_SERVO_PWM     PE5
+#define LATCH_SERVO_PWM     PE5 // pin header 27
 #define PWM_OUT2            PE6
 #define PWM_OUT3            PA0 //UART4_TX (avoid if possible)
 #define PWM_OUT4            PA1 //UART4_RX (avoid if possible)
