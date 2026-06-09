@@ -92,6 +92,7 @@
 #define RIGHT_SCREW_PWM     PA3
 #define ANTENNA_SERVO_PWM   PB6
 #define PWM_OUT8            PB7
+#define ALT_PWM_TRY1        PB0
 
 
 #define CONNECTOR_I2C_SDA   PF0
