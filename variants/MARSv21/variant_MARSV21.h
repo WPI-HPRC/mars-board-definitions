@@ -88,7 +88,7 @@
 #define PWM_OUT2            PA1 // TIM02_CH2 on schematic
 #define PWM_OUT3            PA2 // TIM02_CH3 on schematic
 #define PWM_OUT4            PA3 // TIM02_CH4 on schematic
-#define PWM_OUT5            PD12 // TIM04_CH1 on schematic
+#define PWM_OUT5            PD12 // TIM04_CH1 on schematic XXX: PD12 and PB7 are connected to the debug jumpers. These jumpers must be resoldered for these pins to be used!!!
 #define PWM_OUT6            PB7 // TIM04_CH2 on schematic
 #define PWM_OUT7            PE6 // TIM15_CH2 on schematic
 
@@ -205,6 +205,7 @@
 #define PG8 72
 #define PE6 73
 #define PD12 74
+#define PB7 75
 
 // one more than above index, size of digitalPin[] in the .cpp of the same name
 #define NUM_DIGITAL_PINS        75
