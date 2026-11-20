@@ -68,8 +68,8 @@
 
 
 // GPS
-#define GPS_I2C_SDA         PF15
-#define GPS_I2C_SCL         PF14
+#define GPS_I2C_SDA         PF0
+#define GPS_I2C_SCL         PF1
 #define GPS_RESET           PB8
 #define GPS_INT             PB9
 #define GPS_SERIAL_TX       PB14
